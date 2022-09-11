@@ -1,0 +1,48 @@
+{
+  "properties": [
+    {
+      "name": "wx.AppID",
+      "type": "java.lang.String",
+      "description": "Description for wx.AppID."
+    },
+    {
+      "name": "wx.AppSecret",
+      "type": "java.lang.String",
+      "description": "Description for wx.AppSecret."
+    },
+    {
+      "name": "token",
+      "type": "java.lang.String",
+      "description": "Description for token."
+    },
+    {
+      "name": "testWx.AppID",
+      "type": "java.lang.String",
+      "description": "Description for testWx.AppID."
+    },
+    {
+      "name": "testWx.AppSecret",
+      "type": "java.lang.String",
+      "description": "Description for testWx.AppSecret."
+    },
+    {
+      "name": "URL",
+      "type": "java.lang.String",
+      "description": "Description for URL."
+    },
+    {
+      "name": "JUHE.API_URL",
+      "type": "java.lang.String",
+      "description": "Description for JUHE.API_URL."
+    },
+    {
+      "name": "JUHE.API_KEY",
+      "type": "java.lang.String",
+      "description": "Description for JUHE.API_KEY."
+    },
+    {
+      "name": "city",
+      "type": "java.lang.String",
+      "description": "Description for city."
+    }
+  ] }

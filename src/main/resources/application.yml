@@ -1,0 +1,39 @@
+spring:
+  mail:
+    host: smtp.163.com
+    username: ouao_happygh0st@163.com
+    password: GDZENUVHWSDFEKND
+    default-encoding: utf-8
+    port: 465
+    protocol: smtps
+
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    username: root
+    password: hg5200820
+    url: jdbc:mysql://127.0.0.1:3306/remind?useUnicode=true&characterEncoding=UTF-8&useSSL=false&serverTimezone=Asia/Shanghai
+
+server:
+  port: 8081
+
+mybatis-plus:
+  mapper-locations: classpath*:/mapper/**Mapper.xml
+
+token: happygh0st
+
+wx:
+  AppID: wx1f20e02cf0da7c8c
+  AppSecret: 203509e5919b27dfc2037198f05d65ef
+
+testWx:
+  AppID: wx82c27edeb21d3bc8
+  AppSecret: 85dd1f226440cc1094c1c8fa27b31596
+
+URL: https://api.weixin.qq.com/cgi-bin/token?grant_type=client_credential&appid=APPID&secret=APPSECRET
+
+
+JUHE:
+  API_URL: http://apis.juhe.cn/simpleWeather/query
+  API_KEY: 82c2458e3e27b669b5c7b5792cc3ba67
+
+city: 昆明

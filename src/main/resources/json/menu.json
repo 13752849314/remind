@@ -1,0 +1,14 @@
+{
+  "button": [
+    {
+      "type": "click",
+      "name": "今日课表",
+      "key": "KUST_Course"
+    },
+    {
+      "type": "click",
+      "name": "今日天气",
+      "key": "KUST_Weather"
+    }
+  ]
+}

@@ -1,0 +1,24 @@
+###
+GET http://localhost:8081/remind/course
+
+###
+POST http://localhost:8081/user/addCourse
+Content-Type: application/json
+
+{
+  "username": "敖鸥",
+  "password": "hg5200820",
+  "className": "综合英语",
+  "time": "2022-09-07",
+  "total": 16,
+  "list": [
+    1,
+    2,
+    3,
+    "123"
+  ],
+  "map": {
+    "1": 2,
+    "hg": "345"
+  }
+}
