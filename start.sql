@@ -16,9 +16,9 @@ create table `user`
 INSERT INTO remind.user (id, username, password, email, phone, sid, remindType, openId)
 VALUES (1, '敖鸥', 'hg5200820', '371575373@qq.com', '13752849314', '20222104066', 1, 'o3wY26G50Db3ShQFLf0VFYcnwgtQ');
 INSERT INTO remind.user (id, username, password, email, phone, sid, remindType, openId)
-VALUES (3, '艾俊辰', 'hg5200820', '545430362@qq.com', '13752849314', '20222104066', 0, 'o3wY26DFPjuvlEViOiSq5onuFEjI');
+VALUES (3, '艾俊辰', 'hg5200820', '545430362@qq.com', '13752849314', '20222104066', 1, 'o3wY26DFPjuvlEViOiSq5onuFEjI');
 INSERT INTO remind.user (id, username, password, email, phone, sid, remindType, openId)
-VALUES (4, '敖鸥', 'hg5200820', '2771751687@qq.com', '13752849314', '20222104066', 0, 'oMpP15gGpjSd4qEy9ETCSDaYIUCM');
+VALUES (4, '敖鸥', 'hg5200820', '2771751687@qq.com', '13752849314', '20222104066', 1, 'oMpP15gGpjSd4qEy9ETCSDaYIUCM');
 
 
 drop table if exists `course`;

@@ -68,6 +68,11 @@ class RemindApplicationTests {
         String weather = weatherService.getWeather();
         System.out.println(weather);
 
+        System.out.println("=-------------------------------=");
+
+        String token = wxService.getAccessToken();
+
+
     }
 
 }

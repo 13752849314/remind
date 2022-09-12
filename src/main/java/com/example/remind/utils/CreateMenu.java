@@ -8,8 +8,16 @@ import org.apache.commons.io.IOUtils;
 import java.io.IOException;
 import java.io.InputStream;
 import java.nio.charset.StandardCharsets;
+import java.util.HashMap;
+import java.util.Map;
 
 public class CreateMenu {
+
+    /**
+     * 创建菜单
+     *
+     * @param wxService 微信
+     */
     public static void creatMenu(WxService wxService) {
         InputStream is = ClassLoader.getSystemResourceAsStream("./json/menu.json");
         try {
@@ -24,5 +32,20 @@ public class CreateMenu {
         } catch (IOException e) {
             e.printStackTrace();
         }
+    }
+
+    /**
+     * 设置行业
+     *
+     * @param wxService 微信
+     */
+    public static void setIndustry(WxService wxService) {
+        String url = "https://api.weixin.qq.com/cgi-bin/template/api_set_industry?access_token=ACCESS_TOKEN";
+        url = url.replace("ACCESS_TOKEN", wxService.getAccessToken());
+        Map<String, String> data = new HashMap<>();
+        data.put("industry_id1", "17");
+        data.put("industry_id2", "2");
+        String post = utils.post(url, data.toString());
+        System.out.println(post);
     }
 }
