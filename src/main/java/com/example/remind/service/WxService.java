@@ -1,6 +1,7 @@
 package com.example.remind.service;
 
 import com.alibaba.fastjson2.JSON;
+import com.alibaba.fastjson2.JSONObject;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.example.remind.entity.AccessToken;
 import com.example.remind.entity.BaseMessage;
@@ -54,8 +55,11 @@ public class WxService {
 //    @Value("${wx.AppSecret}")
 //    private String appSecret;
 
-    @Value("${URL}")
+    @Value("${URL.getToken}")
     private String GetTokenURL;
+
+    @Value("${URL.getUserList}")
+    private String GetUserListURL;
 
     private static AccessToken at;
 
@@ -275,6 +279,11 @@ public class WxService {
             }
         }
 
+        if (content.contains("天气")) {
+            String weather = weatherService.getWeather();
+            return new TextMessage(requestMap, weather);
+        }
+
         return new TextMessage(requestMap, "你干嘛!");
     }
 
@@ -282,5 +291,15 @@ public class WxService {
         XStream stream = new XStream();
         stream.processAnnotations(TextMessage.class);
         return stream.toXML(msg);
+    }
+
+    public List<String> getUserList() {
+        String url = GetUserListURL.replace("ACCESS_TOKEN", getAccessToken()).replace("NEXT_OPENID", "");
+        String s = utils.get(url);
+        JSONObject jsonObject = JSONObject.parseObject(s);
+        if (jsonObject != null) {
+            return jsonObject.getJSONObject("data").getList("openid", String.class);
+        }
+        return null;
     }
 }

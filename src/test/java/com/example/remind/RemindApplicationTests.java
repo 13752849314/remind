@@ -8,6 +8,7 @@ import com.example.remind.entity.Course;
 import com.example.remind.entity.User;
 import com.example.remind.mapper.CourseMapper;
 import com.example.remind.mapper.UserMapper;
+import com.example.remind.service.PunchService;
 import com.example.remind.service.WeatherService;
 import com.example.remind.service.WxService;
 import com.example.remind.utils.CreateMenu;
@@ -36,6 +37,9 @@ class RemindApplicationTests {
 
     @Autowired
     private WeatherService weatherService;
+
+    @Autowired
+    PunchService punchService;
 
     @Test
     void contextLoads() {
@@ -70,8 +74,16 @@ class RemindApplicationTests {
 
         System.out.println("=-------------------------------=");
 
-        String token = wxService.getAccessToken();
+//        CreateMenu.setIndustry(wxService);
 
+        CreateMenu.getIndustry(wxService);
+
+        System.out.println("=---------------------------------=");
+        System.out.println(wxService.getUserList());
+
+        System.out.println("=------------------------------------=");
+
+//        punchService.HealthPunch();
 
     }
 

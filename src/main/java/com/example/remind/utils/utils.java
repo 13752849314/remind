@@ -70,6 +70,12 @@ public class utils {
         return null;
     }
 
+    public static String getTime() {
+        Date date = new Date();
+        SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+        return format.format(date);
+    }
+
     public static void main(String[] args) throws ParseException {
         System.out.println(dateGetWeeks(new Date()));
         System.out.println(dateGetWeeks(StringToDate("2022-09-09")));

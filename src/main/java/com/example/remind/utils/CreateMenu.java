@@ -1,6 +1,7 @@
 package com.example.remind.utils;
 
 import com.alibaba.fastjson2.JSON;
+import com.alibaba.fastjson2.JSONObject;
 import com.example.remind.entity.Button;
 import com.example.remind.service.WxService;
 import org.apache.commons.io.IOUtils;
@@ -45,7 +46,21 @@ public class CreateMenu {
         Map<String, String> data = new HashMap<>();
         data.put("industry_id1", "17");
         data.put("industry_id2", "2");
-        String post = utils.post(url, data.toString());
+        String jsonString = JSONObject.toJSONString(data);
+        System.out.println(jsonString);
+        String post = utils.post(url, jsonString);
         System.out.println(post);
+    }
+
+    /**
+     * 获取行业
+     *
+     * @param wxService 微信
+     */
+    public static void getIndustry(WxService wxService) {
+        String url = "https://api.weixin.qq.com/cgi-bin/template/get_industry?access_token=ACCESS_TOKEN";
+        url = url.replace("ACCESS_TOKEN", wxService.getAccessToken());
+        String s = utils.get(url);
+        System.out.println(s);
     }
 }
