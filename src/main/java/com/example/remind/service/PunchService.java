@@ -2,6 +2,8 @@ package com.example.remind.service;
 
 import com.alibaba.fastjson2.JSONObject;
 import com.example.remind.entity.TemplateMessage;
+import com.example.remind.entity.User;
+import com.example.remind.mapper.UserMapper;
 import com.example.remind.utils.utils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
@@ -17,6 +19,9 @@ public class PunchService {
 
     @Autowired
     private WxService wxService;
+
+    @Autowired
+    private UserMapper userMapper;
 
     @Value("${URL.sendTemplate}")
     private String SendTemplateURL;
@@ -52,7 +57,7 @@ public class PunchService {
     /**
      * 健康打卡提醒
      */
-    @Scheduled(cron = "0 0 8 * * ?", zone = "UTC+8")
+    @Scheduled(cron = "0 0 8 * * ?", zone = "Asia/Shanghai")
     public void HealthPunch() {
         send(health_MESSAGE);
     }
@@ -60,7 +65,7 @@ public class PunchService {
     /**
      * 晨检打卡提醒
      */
-    @Scheduled(cron = "0 30 7 * * ?", zone = "UTC+8")
+    @Scheduled(cron = "0 30 7 * * ?", zone = "Asia/Shanghai")
     public void MorningPunch() {
         send(morning_MESSAGE);
     }
@@ -68,7 +73,7 @@ public class PunchService {
     /**
      * 晨检打卡提醒
      */
-    @Scheduled(cron = "0 0 12 * * ?", zone = "UTC+8")
+    @Scheduled(cron = "0 0 12 * * ?", zone = "Asia/Shanghai")
     public void LunchPunch() {
         send(lunch_MESSAGE);
     }
@@ -76,15 +81,31 @@ public class PunchService {
     /**
      * 晨检打卡提醒
      */
-    @Scheduled(cron = "0 0 22 * * ?", zone = "UTC+8")
+    @Scheduled(cron = "0 0 22 * * ?", zone = "Asia/Shanghai")
     public void NightPunch() {
         send(night_MESSAGE);
     }
 
 
-// @Scheduled(cron = "0/10 * * * * ? ")
+    // @Scheduled(cron = "0/10 * * * * ? ")
 // public void test() {
 //     System.out.println("test");
 //     send(night_MESSAGE);
 // }
+//    @Scheduled(cron = "0/30 * * * * ?", zone = "Asia/Shanghai")
+//    public void myTest() {
+//        List<String> users = wxService.getUserList();
+//        System.out.println(users);
+//        System.out.println("test:" + utils.getTime());
+//        for (String user : users) {
+//            User uu = userMapper.getUserByOpenId(user);
+//            if (uu.getUsername().equals("敖鸥")) {
+//                TemplateMessage message = new TemplateMessage();
+//                message.setTemplate_id(Template_ID);
+//                message.setTouser(user);
+//                message.put("message", "这是一个测试!", "#28FF17");
+//                sendTemplateMessage(message);
+//            }
+//        }
+//    }
 }

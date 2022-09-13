@@ -235,6 +235,10 @@ public class WxService {
                 String weather = weatherService.getWeather();
                 return new TextMessage(requestMap, weather);
             }
+            case "KUST_Course_to": {
+                String courseStr = courseService.getTomorrowCourse(requestMap.get("FromUserName"));
+                return new TextMessage(requestMap, courseStr);
+            }
             default: {
                 return new TextMessage(requestMap, "该事件尚未定义！");
             }

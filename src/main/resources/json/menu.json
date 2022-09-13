@@ -9,6 +9,11 @@
       "type": "click",
       "name": "今日天气",
       "key": "KUST_Weather"
+    },
+    {
+      "type": "click",
+      "name": "明日课表",
+      "key": "KUST_Course_to"
     }
   ]
 }

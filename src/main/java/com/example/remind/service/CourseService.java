@@ -62,4 +62,45 @@ public class CourseService {
         return builder.toString();
     }
 
+    public String getTomorrowCourse(String fromUserName) {
+        // 找到openId 对应的用户
+        QueryWrapper<User> userQueryWrapper = new QueryWrapper<>();
+        userQueryWrapper.eq("openId", fromUserName);
+        User user = userMapper.selectOne(userQueryWrapper);
+
+        String coursesMsg = "";
+
+        if (user == null) {
+            coursesMsg = "该用户还没有绑定，请发送[绑定+用户名]进行绑定！";
+        } else {
+            coursesMsg = tomorrowCourse(user.getUsername());
+        }
+
+        return coursesMsg;
+    }
+
+    private String tomorrowCourse(String username) {
+        List<Course> courses = courseMapper.getCourseByUsername(username);
+        Collections.sort(courses);
+        StringBuilder builder = new StringBuilder();
+        Calendar cal = Calendar.getInstance();
+        cal.setTime(new Date());
+        cal.add(Calendar.DATE, 1);
+        Date date = cal.getTime();
+        int newWeek = utils.dateGetWeeks(date);
+
+        for (Course course : courses) {
+            cal.setTime(course.getStartAt());
+            cal.add(Calendar.DATE, 7 * course.getTotal() + 1);
+            if (utils.dateGetWeeks(course.getStartAt()) == newWeek && (course.getStartAt().compareTo(date) <= 0)
+                    && (cal.getTime().compareTo(date) > 0)) {
+                builder.append(course.getInfo());
+                builder.append("\n");
+            }
+        }
+        if (builder.length() <= 0) {
+            return "明日无课，尽情happy吧！";
+        }
+        return builder.toString();
+    }
 }
