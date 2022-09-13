@@ -6,11 +6,13 @@ import com.example.remind.utils.utils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.scheduling.annotation.Scheduled;
+import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 
 @Service
+@Component
 public class PunchService {
 
     @Autowired
@@ -43,6 +45,7 @@ public class PunchService {
         for (String user : users) {
             message.setTouser(user);
             sendTemplateMessage(message);
+            System.out.println("发送成功！");
         }
     }
 
@@ -77,4 +80,11 @@ public class PunchService {
     public void NightPunch() {
         send(night_MESSAGE);
     }
+
+
+// @Scheduled(cron = "0/10 * * * * ? ")
+// public void test() {
+//     System.out.println("test");
+//     send(night_MESSAGE);
+// }
 }

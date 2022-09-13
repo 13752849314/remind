@@ -284,6 +284,11 @@ public class WxService {
             return new TextMessage(requestMap, weather);
         }
 
+        if (content.contains("时间")) {
+            String time = utils.getTime();
+            return new TextMessage(requestMap, time);
+        }
+
         return new TextMessage(requestMap, "你干嘛!");
     }
 
