@@ -6,11 +6,13 @@ import com.example.remind.utils.utils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.scheduling.annotation.Scheduled;
+import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 
 @Service
+@Component
 public class PunchService {
 
     @Autowired
@@ -22,9 +24,9 @@ public class PunchService {
     // 模板ID
     private static final String Template_ID = "KNmABCsj4IlnHp9Puf3geOXZJ7mPkCyliKoVBLeIREM";
     private static final String health_MESSAGE = "又是新的一天！记得健康打卡哦！";
-    private static final String morning_MESSAGE = "晨检打卡开始了！记得打卡哦！\n 截止时间: 10:00";
-    private static final String lunch_MESSAGE = "午检打卡开始了！记得打卡哦！\n 截止时间: 15:00";
-    private static final String night_MESSAGE = "晚检打卡开始了！记得打卡哦！\n 截止时间: 23:00";
+    private static final String morning_MESSAGE = "晨检打卡开始了！记得打卡哦！\n截止时间: 10:00";
+    private static final String lunch_MESSAGE = "午检打卡开始了！记得打卡哦！\n截止时间: 15:00";
+    private static final String night_MESSAGE = "晚检打卡开始了！记得打卡哦！\n截止时间: 23:00";
 
 
     private void sendTemplateMessage(TemplateMessage text) {
@@ -49,7 +51,7 @@ public class PunchService {
     /**
      * 健康打卡提醒
      */
-    @Scheduled(cron = "0 0 8 * * ?")
+    @Scheduled(cron = "0 0 8 * * ?", zone = "UTC+8")
     public void HealthPunch() {
         send(health_MESSAGE);
     }
@@ -57,7 +59,7 @@ public class PunchService {
     /**
      * 晨检打卡提醒
      */
-    @Scheduled(cron = "0 30 7 * * ?")
+    @Scheduled(cron = "0 30 7 * * ?", zone = "UTC+8")
     public void MorningPunch() {
         send(morning_MESSAGE);
     }
@@ -65,7 +67,7 @@ public class PunchService {
     /**
      * 晨检打卡提醒
      */
-    @Scheduled(cron = "0 0 12 * * ?")
+    @Scheduled(cron = "0 0 12 * * ?", zone = "UTC+8")
     public void LunchPunch() {
         send(lunch_MESSAGE);
     }
@@ -73,7 +75,7 @@ public class PunchService {
     /**
      * 晨检打卡提醒
      */
-    @Scheduled(cron = "0 0 22 * * ?")
+    @Scheduled(cron = "0 0 22 * * ?", zone = "UTC+8")
     public void NightPunch() {
         send(night_MESSAGE);
     }
